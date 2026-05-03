@@ -1,7 +1,6 @@
 package otus.homework.customview
 
 import android.content.Context
-import android.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import otus.homework.customview.data.JsonMapper
@@ -17,17 +16,8 @@ class PieViewModel(
                 name = it.name,
                 amount = it.amount,
                 category = it.category,
-                color = randomColor()
             )
-        }
-    }
-
-private fun randomColor(): Int {
-    return Color.rgb(
-        (0..255).random(),
-        (0..255).random(),
-        (0..255).random(),
-    )
+        }.groupBy { it.category }
 }
 
 class PieViewModelFactory(
